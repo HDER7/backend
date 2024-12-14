@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function show($productId)
     {
-        $product = Product::all()->find($productId);
+        $product = Product::with('variants')->findOrFail($productId);
 
         return response()->json($product);
     }
